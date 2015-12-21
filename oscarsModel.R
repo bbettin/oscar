@@ -43,9 +43,34 @@ fn
 # film regression
 summary(lm(filmTable$Awards ~ filmTable$Nominations))
 
+# best picture build
+bpURL <- html("https://en.wikipedia.org/wiki/Academy_Award_for_Best_Picture")
+bpTable <- data.frame()
+target <- data.frame()
+for (i in 3:length(html_table(html_nodes(bpURL, "table")))) {
+  target <- html_table(html_nodes(bpURL, "table") [[i]])
+  bpTable <- rbind(bpTable, target)
+}
+
+# okay it's the <h3> tags that are fucking the loop up
+
+target <- html_table(html_nodes(bpURL, "table") [[4]])
+bpTable <- rbind(bpTable, target)
 
 
 
+
+
+
+head(target)
+head(bpTable)
+bpTable11 <- html_table(html_nodes(bpURL, "table") [[11]])
+bpTable12 <- html_table(html_nodes(bpURL, "table") [[12]])
+
+head(bpTable11)
+head(bpTable12)
+
+rbind(bpTable11, bpTable12)
 
 
 
