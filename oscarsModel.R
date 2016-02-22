@@ -52,7 +52,7 @@ for (i in 3:length(html_table(html_nodes(bpURL, "table")))) {
   bpTable <- rbind(bpTable, target)
 }
 
-# okay it's the <h3> tags that are fucking the loop up
+# appears that the <h3> tags are somehow breaking the loop
 
 target <- html_table(html_nodes(bpURL, "table") [[4]])
 bpTable <- rbind(bpTable, target)
